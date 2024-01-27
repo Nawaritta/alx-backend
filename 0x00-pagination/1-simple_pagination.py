@@ -42,7 +42,7 @@ class Server:
         dataset = self.dataset()
         if len(dataset) >= page * page_size:
             starting_page = index_range(page, page_size)[0]
-            ending_page = index_range(page, page_size)[1] + 1
+            ending_page = index_range(page, page_size)[1]
             result = [dataset[i] for i in range(starting_page, ending_page)]
 
         return result
