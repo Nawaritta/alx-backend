@@ -53,5 +53,5 @@ class Server:
             "index": (page - 1) * page_size + 1,
             "next_index": page * page_size + 1,
             "page_size": page_size if page < total_pages else last_page_size,
-            #"data": self.dataset()
+            "data": self.dataset()
         }
