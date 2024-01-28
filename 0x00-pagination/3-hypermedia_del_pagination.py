@@ -49,9 +49,11 @@ class Server:
         total_pages = math.ceil(dataset / page_size)
         last_page_size = dataset % page_size
 
+        index = (page - 1) * page_size + 1
+        next_index = page * page_size + 1
         return {
-            "index": (page - 1) * page_size + 1,
-            "data": self.dataset(),
+            "index": index,
+            "data": self.dataset()[index:next_index],
             "page_size": page_size if page < total_pages else last_page_size,
-            "next_index": page * page_size + 1
+            "next_index": next_index
         }
