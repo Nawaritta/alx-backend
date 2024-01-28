@@ -50,7 +50,7 @@ class Server:
         last_page_size = dataset % page_size
 
         index = (page - 1) * page_size + 1
-        next_index = page * page_size + 1
+        next_index = min(index + page_size, dataset)
         return {
             "index": index,
             "data": self.dataset()[index:next_index],
