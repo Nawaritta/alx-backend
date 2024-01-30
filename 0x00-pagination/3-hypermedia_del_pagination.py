@@ -49,7 +49,6 @@ class Server:
         total_pages = math.ceil(dataset / page_size)
         last_page_size = dataset % page_size
 
-        #index = (page - 1) * page_size + 1
         next_index = min(index + page_size, dataset)
         return {
             "index": index,
