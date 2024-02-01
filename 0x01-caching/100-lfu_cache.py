@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""This module contains MRUCache class"""
+"""This module contains LFUCache class"""
 from base_caching import BaseCaching
 
 
-class MRUCache(BaseCaching):
+class LFUCache(BaseCaching):
     """inherits from BaseCaching and is a caching system"""
 
     def __init__(self):
@@ -17,9 +17,9 @@ class MRUCache(BaseCaching):
                 self.cache_data.pop(key)
             self.cache_data[key] = item
             if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-                mru_key = list(self.cache_data)[-2]
-                self.cache_data.pop(mru_key)
-                print("DISCARD: {}".format(mru_key))
+                lfu_key = list(self.cache_data)[-2]
+                self.cache_data.pop(lfu_key)
+                print("DISCARD: {}".format(lfu_key))
         pass
 
     def get(self, key):
