@@ -25,5 +25,7 @@ class MRUCache(BaseCaching):
     def get(self, key):
         """gets the key value"""
         if key and key in self.cache_data:
+            value = self.cache_data.pop(key)
+            self.put(key, value)
             return self.cache_data[key]
         return None
