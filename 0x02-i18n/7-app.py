@@ -53,10 +53,16 @@ def get_locale() -> str:
 
 
 def get_user() -> Union[Dict, None]:
-    """ returns a user dictionary or None if the ID cannot be found
+    """Returns a user dictionary or None if the ID cannot be found
     or if login_as was not passed."""
     id = request.args.get('login_as')
-    return users.get(int(id), None)
+    if id is not None:
+        try:
+            user_id = int(id)
+            return users.get(user_id)
+        except (ValueError, TypeError):
+            pass
+    return None
 
 
 @app.before_request
